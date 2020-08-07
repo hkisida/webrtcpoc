@@ -89,16 +89,21 @@ $(function() {
   function step1() {
     // Get audio/video stream
 //    const audioSource = $('#audioSource').val();
-    const videoSource = $('#videoSource').val();
-    const constraints = {
+//    const videoSource = $('#videoSource').val();
+//    const constraints = {
 //      audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
-      video: {deviceId: videoSource ? {exact: videoSource} : undefined},
-    };
+//      video: {deviceId: videoSource ? {exact: videoSource} : undefined},
+//    };
 
 //    navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-    navigator.mediaDevices.getDisplayMedia(constraints).then(stream => {
+
+    console.log("getDisplayMedia:start");
+
+    navigator.mediaDevices.getDisplayMedia().then(stream => {
       $('#my-video').get(0).srcObject = stream;
       localStream = stream;
+
+    console.log("getDisplayMedia:end");
 
       if (room) {
         room.replaceStream(stream);
